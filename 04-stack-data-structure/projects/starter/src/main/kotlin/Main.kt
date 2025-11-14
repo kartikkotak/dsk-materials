@@ -1,3 +1,9 @@
+import linkedlist.LinkedList
+import main.kotlin.StackImpl
+import main.kotlin.checkParanthesis
+import main.kotlin.printInReverse
+import main.kotlin.stackOf
+
 /*
  * Copyright (c) 2021 Razeware LLC
  *
@@ -29,5 +35,53 @@
  */
 
 fun main() {
+    "using a stack" example {
+        val stack = StackImpl<Int>().apply {
+            push(1)
+            push(2)
+            push(3)
+            push(4)
+        }
+        print(stack)
+        val poppedElement = stack.pop()
+        if (poppedElement != null) {
+            println("Popped: $poppedElement")
+        }
+        print(stack)
+    }
 
+    "initializing a stack from a list" example {
+        val list = listOf("A", "B", "C", "D")
+        val stack = StackImpl.create(list)
+        print(stack)
+        println("Popped: ${stack.pop()}")
+    }
+
+    "initializing a stack from an array literal" example {
+        val stack = stackOf(1.0, 2.0, 3.0, 4.0)
+        print(stack)
+        println("Popped: ${stack.pop()}")
+    }
+
+    "Print LinkedList in reverse" example {
+        val list: LinkedList<Int> = LinkedList()
+        list.apply {
+            list.push(1)
+            list.push(2)
+            list.push(3)
+            list.push(4)
+            list.push(5)
+            list.push(6)
+        }
+        println("List: $list")
+        list.printInReverse()
+    }
+
+    "Check paranthesis" example {
+        val testCase1 = "h((e))llo(world)()"
+        println("$testCase1 has balanced paranthesis: ${testCase1.checkParanthesis()}")
+
+        val testCase2 = "(hello world"
+        println("$testCase2 has balanced paranthesis: ${testCase2.checkParanthesis()}")
+    }
 }
