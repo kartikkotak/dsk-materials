@@ -97,6 +97,4 @@ class BinaryNode<T : Comparable<T>>(var value: T) {
                 other.rightChild == rightChild
         } else { false }
     }
-
-    contains()
 }
