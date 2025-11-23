@@ -1,3 +1,5 @@
+import main.kotlin.BinarySearchTree
+
 /*
  * Copyright (c) 2021 Razeware LLC
  *
@@ -27,7 +29,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
- 
-fun main() {
 
+fun main() {
+    val exampleTree = BinarySearchTree<Int>().apply {
+        insert(3)
+        insert(1)
+        insert(4)
+        insert(0)
+        insert(2)
+        insert(5)
+    }
+
+    "building a BST" example {
+        val bst = BinarySearchTree<Int>()
+        (0..4).forEach {
+            bst.insert(it)
+        }
+        println(bst)
+    }
+
+    "building a BST" example {
+        println(exampleTree)
+    }
+
+    "removing a node" example {
+        println("Tree before removal:")
+        println(exampleTree)
+        exampleTree.remove(3)
+        println("Tree after removing root:")
+        println(exampleTree)
+    }
+
+    "Is BST" example {
+        println("Eample tree")
+        println(exampleTree)
+
+        println("Is BST: ${exampleTree.root?.isBinarySearchTree}")
+    }
 }
