@@ -30,15 +30,31 @@
 
 interface Queue<T> {
 
-  fun enqueue(element: T): Boolean
+    fun enqueue(element: T): Boolean
 
-  fun dequeue(): T?
+    fun dequeue(): T?
 
-  val count: Int
-    get
+    val count: Int
+        get
 
-  val isEmpty: Boolean
-    get() = count == 0
+    val isEmpty: Boolean
+        get() = count == 0
 
-  fun peek(): T?
+    fun peek(): T?
+}
+
+public class ArrayListQueue<T>: Queue<T> {
+    private val array: MutableList<T> = mutableListOf()
+    override fun enqueue(element: T): Boolean =
+        array.add(element)
+
+    override fun dequeue(): T? =
+        array.removeFirstOrNull()
+
+    override val count: Int
+        get() = array.size
+
+    override fun peek(): T? =
+        array.firstOrNull()
+
 }
